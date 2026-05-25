@@ -13,7 +13,8 @@ public class DriverConfig {
     public WebDriver driver() {
 
         WebDriverManager.chromedriver().setup();
-
-        return new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        return driver;
     }
 }

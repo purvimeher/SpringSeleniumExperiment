@@ -1,15 +1,24 @@
 package com.example.tests;
 
 import com.example.SpringSeleniumApplication;
+import com.example.pages.GooglePage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestConstructor;
 
-@SpringBootTest(classes = SpringSeleniumApplication.class)
+@SpringBootTest
+@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class GoogleTest {
 
+
+    private final GooglePage googlePage;
+
+    public GoogleTest(GooglePage googlePage) {
+        this.googlePage = googlePage;
+    }
     @Autowired
     private WebDriver driver;
 
@@ -17,8 +26,9 @@ class GoogleTest {
     private String baseUrl;
 
     @Test
-    void openGoogle() {
-        driver.get(baseUrl);
-        System.out.println(driver.getTitle());
+    void searchGoogle() {
+        googlePage.open(baseUrl);
+        googlePage.search("Selenium Spring Boot");
+        System.out.println(googlePage.getTitle());
     }
 }
