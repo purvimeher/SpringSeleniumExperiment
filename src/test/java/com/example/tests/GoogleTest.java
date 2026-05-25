@@ -14,17 +14,15 @@ import org.springframework.test.context.TestConstructor;
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class GoogleTest {
 
-
     private final GooglePage googlePage;
+    @Autowired
+    private WebDriver driver;
+    @Value("${app.base.url}")
+    private String baseUrl;
 
     public GoogleTest(GooglePage googlePage) {
         this.googlePage = googlePage;
     }
-    @Autowired
-    private WebDriver driver;
-
-    @Value("${app.base.url}")
-    private String baseUrl;
 
     @Test
     @Tag("smoke")
