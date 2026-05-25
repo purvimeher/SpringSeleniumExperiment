@@ -2,6 +2,7 @@ package com.example.tests;
 
 import com.example.SpringSeleniumApplication;
 import com.example.pages.GooglePage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,12 @@ class GoogleTest {
     private String baseUrl;
 
     @Test
+    @Tag("smoke")
     void searchGoogle() {
         googlePage.open(baseUrl);
         googlePage.search("Selenium Spring Boot");
         System.out.println(googlePage.getTitle());
+        System.out.println("Base URL: " + baseUrl);
+        System.out.println("Current URL: " + driver.getCurrentUrl());
     }
 }
