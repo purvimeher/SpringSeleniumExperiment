@@ -74,15 +74,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
-
-                <configuration>
-                    <properties>
-                        <property>
-                            <name>junit.jupiter.tags</name>
-                            <value>smoke</value>
-                        </property>
-                    </properties>
-                </configuration>
             </plugin>
         </plugins>
     </build>

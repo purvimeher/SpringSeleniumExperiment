@@ -1,7 +1,7 @@
 package com.example.tests;
 
-import com.example.SpringSeleniumApplication;
 import com.example.pages.GooglePage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -34,5 +34,20 @@ class GoogleTest {
         System.out.println(googlePage.getTitle());
         System.out.println("Base URL: " + baseUrl);
         System.out.println("Current URL: " + driver.getCurrentUrl());
+    }
+
+    @Test
+    @Tag("ui")
+    void searchGoogleWithSpecifcData() {
+        googlePage.open(baseUrl);
+        googlePage.search("UI Testing with selenium");
+        System.out.println(googlePage.getTitle());
+        System.out.println("Base URL: " + baseUrl);
+        System.out.println("Current URL: " + driver.getCurrentUrl());
+    }
+
+    @AfterEach
+    void tearDown() {
+        driver.quit();
     }
 }
